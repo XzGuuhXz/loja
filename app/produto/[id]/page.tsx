@@ -1,0 +1,3 @@
+import { createClient } from '@/lib/supabase/server';
+import { notFound } from 'next/navigation';
+export default async function Product({params}:{params:Promise<{id:string}>}){const {id}=await params;const s=await createClient();const {data:p}=await s.from('products').select('id,name,description,price,stock,categories(name)').eq('id',id).eq('active',true).maybeSingle();if(!p)notFound();return <main style={{maxWidth:700,margin:'0 auto',padding:32}}><a href="/">← Voltar</a><h1>{p.name}</h1><p>{p.description}</p><h2>R$ {Number(p.price).toFixed(2).replace('.',',')}</h2><p>{p.stock} em estoque</p><p>Adicione ao carrinho pelo fluxo de compra da loja.</p></main>}
