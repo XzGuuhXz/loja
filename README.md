@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/XzGuuhXz/loja/main/assets/loja-banner.svg" alt="Loja — Construída para vender. Projetada para crescer." width="100%" />
+<img src="./assets/loja-showcase.svg" width="100%" alt="Loja — storefront showcase" />
 
 <br/>
 <br/>
@@ -9,11 +9,11 @@
 
 ### **Construída para vender. Projetada para crescer.**
 
-Uma experiência de compra moderna com **Next.js + Supabase + PostgreSQL + Mercado Pago + Vercel**.
+**Next.js · React · TypeScript · Supabase · PostgreSQL · Mercado Pago · Vercel**
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111111)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/) [![Mercado Pago](https://img.shields.io/badge/Mercado%20Pago-Checkout-009EE3?style=for-the-badge)](https://www.mercadopago.com.br/) [![Vercel](https://img.shields.io/badge/Vercel-Production-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/) [![Mercado Pago](https://img.shields.io/badge/Mercado%20Pago-Checkout-009EE3?style=for-the-badge)](https://www.mercadopago.com.br/) [![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
 <br/>
 
@@ -27,44 +27,46 @@ Uma experiência de compra moderna com **Next.js + Supabase + PostgreSQL + Merca
 
 </div>
 
-<br/>
-
 <div align="center">
 
-## 💚 Uma loja pensada como produto
+## 💚 Uma experiência de compra. Uma plataforma de negócio.
 
-**Experiência simples para quem compra. Controle poderoso para quem vende. Segurança em cada camada.**
+**Simples para quem compra. Poderosa para quem vende. Segura por arquitetura.**
 
 </div>
 
-> E-commerce não é apenas catálogo + carrinho. A Loja foi estruturada para tratar **autenticação, preço, estoque, pedidos e pagamentos como regras de negócio**, mantendo as decisões críticas fora da confiança do navegador.
+> A Loja não trata o navegador como autoridade. **Preço, estoque, autenticação, autorização, pedidos e pagamentos** são regras de negócio protegidas por backend e banco de dados.
 
 ---
 
-## 📊 The Store Keeps Growing
+## 📈 The Store Keeps Growing
 
 <div align="center">
 
-| 🛒 Experiência | ⚙️ Operação | 🔐 Segurança | ☁️ Infraestrutura |
+| 🛒 Storefront | 👑 Backoffice | 🔐 Security | ☁️ Cloud |
 |:---:|:---:|:---:|:---:|
 | Catálogo | Produtos | RLS | Vercel |
 | Busca | Categorias | Auth | Supabase |
 | Carrinho | Estoque | Server-side | PostgreSQL |
 | Checkout | Pedidos | HMAC | CI/CD |
 
+<br/>
+
+**→ Evolução contínua · novas experiências · melhorias de segurança · infraestrutura preparada para escala**
+
 </div>
 
 <br/>
 
-## ⭐ Se a Loja te ajudou
+## ⭐ Apoie o projeto
 
 <div align="center">
 
-**⭐ Dê uma estrela no repositório e acompanhe a evolução do projeto.**
+### **Se a Loja te ajudou, deixe uma estrela e acompanhe a evolução.**
 
-[![GitHub stars](https://img.shields.io/github/stars/XzGuuhXz/loja?style=social)](https://github.com/XzGuuhXz/loja)
-[![GitHub forks](https://img.shields.io/github/forks/XzGuuhXz/loja?style=social)](https://github.com/XzGuuhXz/loja)
-[![GitHub issues](https://img.shields.io/github/issues/XzGuuhXz/loja?style=social)](https://github.com/XzGuuhXz/loja/issues)
+[![Stars](https://img.shields.io/github/stars/XzGuuhXz/loja?style=social)](https://github.com/XzGuuhXz/loja)
+[![Forks](https://img.shields.io/github/forks/XzGuuhXz/loja?style=social)](https://github.com/XzGuuhXz/loja)
+[![Issues](https://img.shields.io/github/issues/XzGuuhXz/loja?style=social)](https://github.com/XzGuuhXz/loja/issues)
 
 </div>
 
@@ -77,31 +79,31 @@ Uma experiência de compra moderna com **Next.js + Supabase + PostgreSQL + Merca
     <td align="right"><b>🚀 Comece</b></td>
     <td align="center"><a href="#-quick-start">Quick Start</a></td>
     <td align="center"><a href="#-funcionalidades">Funcionalidades</a></td>
-    <td align="center"><a href="#-arquitetura">Arquitetura</a></td>
+    <td align="center"><a href="#-loja-in-action">In Action</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💡 Entenda</b></td>
+    <td align="right"><b>💡 Produto</b></td>
     <td align="center"><a href="#-a-promessa">A Promessa</a></td>
     <td align="center"><a href="#-por-que-loja">Por que Loja?</a></td>
     <td align="center"><a href="#-o-que-diferencia-a-loja">Diferenciais</a></td>
   </tr>
   <tr>
     <td align="right"><b>⚙️ Engenharia</b></td>
+    <td align="center"><a href="#-tech-stack">Tech Stack</a></td>
+    <td align="center"><a href="#-arquitetura">Arquitetura</a></td>
     <td align="center"><a href="#-segurança">Segurança</a></td>
-    <td align="center"><a href="#-pagamentos">Pagamentos</a></td>
-    <td align="center"><a href="#-banco-de-dados">Banco</a></td>
   </tr>
   <tr>
-    <td align="right"><b>👀 Veja</b></td>
-    <td align="center"><a href="#-jornada-de-compra">Jornada</a></td>
+    <td align="right"><b>💳 Commerce</b></td>
+    <td align="center"><a href="#-pagamentos">Pagamentos</a></td>
+    <td align="center"><a href="#-banco-de-dados">Banco</a></td>
     <td align="center"><a href="#-administração">Administração</a></td>
-    <td align="center"><a href="#-identidade-visual">Identidade</a></td>
   </tr>
   <tr>
     <td align="right"><b>📦 Projeto</b></td>
-    <td align="center"><a href="#-tech-stack">Tech Stack</a></td>
     <td align="center"><a href="#-estrutura">Estrutura</a></td>
-    <td align="center"><a href="#-roadmap">Roadmap</a></td>
+    <td align="center"><a href="#-quick-start">Desenvolvimento</a></td>
+    <td align="center"><a href="#-deploy">Deploy</a></td>
   </tr>
 </table>
 
@@ -115,7 +117,27 @@ Uma experiência de compra moderna com **Next.js + Supabase + PostgreSQL + Merca
 
 </div>
 
-A Loja combina uma interface de e-commerce moderna com uma arquitetura orientada a regras de negócio. O cliente vê uma experiência direta; o servidor e o banco garantem que operações críticas sejam realmente válidas.
+A Loja foi pensada como **produto**, não apenas como uma página de catálogo. A experiência do cliente é direta, enquanto as decisões críticas ficam sob responsabilidade do servidor e do banco.
+
+```text
+CLIENTE
+   │
+   ├── 🔎 Descobre
+   ├── 🛒 Escolhe
+   ├── 💳 Compra
+   └── 📦 Acompanha
+          │
+          ▼
+     LOJA / BACKEND
+          │
+   ┌──────┼─────────┐
+   ▼      ▼         ▼
+  AUTH   STOCK    PAYMENT
+   │      │         │
+   └──────┴────┬────┘
+                ▼
+          🗄️ DATABASE
+```
 
 ---
 
@@ -126,90 +148,64 @@ A Loja combina uma interface de e-commerce moderna com uma arquitetura orientada
 | Frontend decide regras críticas | Backend valida operações críticas |
 | Estoque confiado ao navegador | Estoque protegido no banco |
 | Checkout expõe lógica sensível | Preferência criada server-side |
-| Admin baseado apenas na UI | Autorização server-side |
-| Webhook aceito sem validação | HMAC para verificar origem |
+| Admin depende apenas da interface | Autorização server-side |
+| Webhook aceito sem verificar origem | HMAC valida a assinatura |
+| Secrets espalhados pelo projeto | Credenciais restritas ao servidor |
 
 ---
 
 ## 🏆 O que diferencia a Loja
 
-### 🔐 Security-first por arquitetura
+### 🔐 Security-first
 
-Segurança não é uma tela ou um middleware isolado. **RLS, autenticação, autorização server-side, validação e secrets** trabalham juntos.
+RLS, autenticação, autorização server-side, validação e secrets trabalham juntos. Segurança faz parte da arquitetura desde o início.
 
-### 💳 Pagamentos tratados como fluxo confiável
+### 💳 Pagamentos como fluxo confiável
 
-O cliente inicia a compra, o servidor valida o pedido e cria a preferência, e o webhook processa o retorno do provedor após validar sua assinatura.
+O cliente inicia a compra, o servidor valida o pedido e cria a preferência, e o webhook processa o retorno após validar sua assinatura.
 
 ### 📦 Estoque como regra de negócio
 
-Preço e disponibilidade não devem ser aceitos cegamente do cliente. O backend consulta e valida os dados persistidos antes de operações sensíveis.
+Preço e disponibilidade não são aceitos cegamente do cliente. Dados persistidos são consultados antes de operações sensíveis.
 
-### ☁️ Pronta para cloud
+### ☁️ Full-stack de verdade
 
-Next.js no frontend/backend, Supabase para dados e autenticação, Mercado Pago para pagamentos e Vercel para publicação.
+Frontend, backend, autenticação, banco, storage e integrações vivem em uma arquitetura coesa e preparada para cloud.
 
 ---
 
 ## 🚀 Funcionalidades
 
-### 🛍️ Experiência do cliente
-
-- 🏪 Catálogo de produtos
-- 🔎 Busca e filtros por categoria
-- 🖼️ Imagens via Supabase Storage
-- 🛒 Carrinho de compras
-- 👤 Cadastro, login e sessão
-- 📦 Histórico de pedidos
-- 💳 Checkout com Mercado Pago
-
-### 👑 Administração
-
-- 📋 CRUD de produtos
-- 🗂️ CRUD de categorias
-- 📊 Controle de estoque
-- 🖼️ Upload e gerenciamento de imagens
-- 📦 Gestão de pedidos
-- 🔐 Autorização administrativa server-side
-
-### ⚙️ Engenharia
-
-- 🛡️ PostgreSQL + Row Level Security
-- 🔏 Webhook de pagamento com HMAC
-- ✅ Validação server-side com Zod
-- 🔑 Secrets somente no servidor
-- 🌐 Security headers
-- 🔄 CI com lint e build
-- ☁️ Deploy preparado para Vercel
+<table>
+<tr><td><b>🛍️ Storefront</b></td><td><b>👑 Administração</b></td><td><b>⚙️ Engenharia</b></td></tr>
+<tr><td>🏪 Catálogo</td><td>📋 CRUD de produtos</td><td>🛡️ PostgreSQL + RLS</td></tr>
+<tr><td>🔎 Busca e filtros</td><td>🗂️ CRUD de categorias</td><td>🔏 Webhook HMAC</td></tr>
+<tr><td>🖼️ Imagens</td><td>📊 Controle de estoque</td><td>✅ Validação com Zod</td></tr>
+<tr><td>🛒 Carrinho</td><td>🖼️ Gestão de imagens</td><td>🔑 Secrets server-only</td></tr>
+<tr><td>👤 Auth</td><td>📦 Gestão de pedidos</td><td>🌐 Security headers</td></tr>
+<tr><td>💳 Checkout</td><td>🔐 Autorização server-side</td><td>🔄 CI + Build</td></tr>
+</table>
 
 ---
 
-## 🎬 Loja in action
+## 🎬 Loja in Action
 
-```text
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│ 🏪 CATÁLOGO  │ ──▶ │ 🛒 CARRINHO  │ ──▶ │ 💳 CHECKOUT  │
-└──────────────┘     └──────────────┘     └──────────────┘
-         │                    │                    │
-         ▼                    ▼                    ▼
-   🔎 Descobrir         📦 Revisar          🔐 Validar
-   🖼️ Visualizar        💰 Total            💳 Pagar
-         │                    │                    │
-         └────────────────────┴────────────────────┘
-                              │
-                              ▼
-                       📦 PEDIDO CRIADO
-                              │
-                              ▼
-                       🔏 WEBHOOK HMAC
-                              │
-                              ▼
-                        ✅ STATUS ATUALIZADO
-```
+<img src="./assets/loja-showcase.svg" width="100%" alt="Loja storefront visual preview" />
 
-### Jornada de compra
+<br/>
 
 **1. Descobrir → 2. Escolher → 3. Carrinho → 4. Validar → 5. Pagar → 6. Acompanhar pedido**
+
+```mermaid
+flowchart LR
+    A[🏪 Catálogo] --> B[🔎 Produto]
+    B --> C[🛒 Carrinho]
+    C --> D[🔐 Validação]
+    D --> E[💳 Mercado Pago]
+    E --> F[📦 Pedido]
+    F --> G[🔏 Webhook HMAC]
+    G --> H[✅ Status]
+```
 
 ---
 
@@ -226,7 +222,7 @@ A área administrativa concentra o controle operacional da loja:
 | 🧾 Pedidos | Acompanhamento operacional |
 | 🔐 Acesso | Regras de autorização |
 
-> A interface administrativa não é considerada uma barreira de segurança. As regras importantes são verificadas no servidor e no banco.
+> A interface administrativa não é uma barreira de segurança. As regras importantes são verificadas no servidor e no banco.
 
 ---
 
@@ -234,17 +230,15 @@ A área administrativa concentra o controle operacional da loja:
 
 <div align="center">
 
-### **LOJA**
+<img src="./assets/loja-banner.svg" width="100%" alt="Loja brand banner" />
 
-**Construída para vender. Projetada para crescer.**
+### **Premium · Tecnológica · Limpa · Confiável**
 
 `GRAPHITE` · `WHITE` · `EMERALD` · `CYAN`
 
-**Premium · Tecnológica · Limpa · Confiável**
-
 <br/>
 
-<a href="https://www.canva.com/d/l3K1BCLrMlMFhlp">🎨 Abrir Brand Deck no Canva</a>
+<a href="https://www.canva.com/d/l3K1BCLrMlMFhlp"><strong>🎨 Abrir Brand Deck no Canva</strong></a>
 
 </div>
 
@@ -272,7 +266,7 @@ flowchart LR
 
 | Tecnologia | Papel | Por quê |
 |---|---|---|
-| **Next.js 15** | Full-stack | App Router e backend integrado |
+| **Next.js 15** | Full-stack | App Router + Route Handlers |
 | **React 19** | UI | Componentização |
 | **TypeScript 5** | Código | Tipagem estática |
 | **Tailwind CSS** | Design | Interface consistente |
@@ -401,7 +395,7 @@ npm install
 npm run dev
 ```
 
-Crie `.env.local` a partir do `.env.example`:
+Crie `.env.local` usando `.env.example`:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=seu_url_publico
@@ -419,7 +413,7 @@ npm run lint
 npm run build
 ```
 
-> ⚠️ Nunca commite valores reais de secrets.
+> ⚠️ **Nunca** commite valores reais de secrets.
 
 ---
 
@@ -427,13 +421,11 @@ npm run build
 
 ```mermaid
 flowchart LR
-    G[📤 Git Push] --> CI[⚙️ GitHub Actions]
+    P[📤 git push] --> CI[⚙️ GitHub Actions]
     CI --> L[🔎 Lint]
     L --> B[🏗️ Build]
     B --> V[☁️ Vercel]
-    V --> P[🚀 Production]
-    P --> S[(🗄️ Supabase)]
-    P --> M[💳 Mercado Pago]
+    V --> PROD[🚀 Production]
 ```
 
 ### Variáveis de Production
@@ -447,26 +439,24 @@ MERCADOPAGO_ACCESS_TOKEN
 MERCADOPAGO_WEBHOOK_SECRET
 ```
 
----
-
-## 🆕 O que vem a seguir
-
-### Roadmap
-
-- [ ] 🌐 Domínio oficial
-- [ ] 📸 Galeria visual da aplicação no README
-- [ ] 🧪 Testes automatizados de fluxos críticos
-- [ ] 📊 Observabilidade e métricas
-- [ ] 🚚 Melhorias no fluxo de pedidos
-- [ ] 🎟️ Cupons e promoções
-- [ ] 📈 Dashboard comercial
-- [ ] 📱 Experiência mobile ainda mais refinada
-
-> O roadmap é evolutivo: novas melhorias podem ser adicionadas conforme o produto avança.
+> A publicação funcional em Production depende da configuração correta dessas variáveis e dos serviços externos.
 
 ---
 
-## 📈 Status atual
+## 🆕 Roadmap
+
+| Área | Próximo passo |
+|---|---|
+| 🎨 UX | Refinar microinterações e estados de interface |
+| 📱 Mobile | Evoluir experiência responsiva |
+| 👑 Admin | Expandir métricas e ferramentas operacionais |
+| 📊 Observabilidade | Melhorar monitoramento e diagnóstico |
+| 🧪 Quality | Ampliar testes automatizados |
+| 🌎 Commerce | Evoluir recursos de catálogo e pedidos |
+
+---
+
+## 📊 Status
 
 | Módulo | Estado |
 |---|:---:|
@@ -485,7 +475,7 @@ MERCADOPAGO_WEBHOOK_SECRET
 | Webhook HMAC | ✅ |
 | RLS | ✅ |
 | CI / Build | ✅ |
-| Production | ⚠️ Secrets / configuração |
+| Production | ⚠️ Configuração |
 
 ---
 
@@ -516,33 +506,24 @@ git commit -m "feat: minha melhoria"
 git push origin feature/minha-melhoria
 ```
 
-Depois, abra um Pull Request descrevendo **o que mudou, por quê e como testar**.
-
----
-
-## 📚 Recursos
-
-- 🎨 **Identidade:** [Brand Deck no Canva](https://www.canva.com/d/l3K1BCLrMlMFhlp)
-- 🚀 **Aplicação:** [Loja — Vercel](https://loja-nine-gold.vercel.app/)
-- 🐙 **Código:** [GitHub — XzGuuhXz/loja](https://github.com/XzGuuhXz/loja)
-- 🐛 **Discussões:** [GitHub Issues](https://github.com/XzGuuhXz/loja/issues)
+Depois, abra um Pull Request.
 
 ---
 
 <div align="center">
 
-<br/>
-
-# 🛍️ LOJA
+## 🛍️ LOJA
 
 ### **Construída para vender. Projetada para crescer.**
 
 **Simple for customers. Powerful for business. Secure by architecture.**
 
-<br/>
-
-⭐ **Star the repo · Build · Ship · Grow** ⭐
+⭐ **Star the repo · Explore the code · Build on it** ⭐
 
 <br/>
+
+<a href="https://github.com/XzGuuhXz/loja">GitHub</a> ·
+<a href="https://loja-nine-gold.vercel.app/">Live Demo</a> ·
+<a href="https://www.canva.com/d/l3K1BCLrMlMFhlp">Brand Deck</a>
 
 </div>
