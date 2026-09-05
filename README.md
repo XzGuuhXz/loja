@@ -1,148 +1,196 @@
 <div align="center">
 
-# 🛍️ LOJA
+<img src="https://raw.githubusercontent.com/XzGuuhXz/loja/main/assets/loja-banner.svg" alt="Loja — Construída para vender. Projetada para crescer." width="100%" />
 
-### **Construída para vender. Projetada para crescer.**
+# 🛍️ Loja
 
-E-commerce moderno, seguro e escalável para experiências de compra rápidas, confiáveis e profissionais.
+### E-commerce full-stack brasileiro, moderno e seguro
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-111111?style=for-the-badge&logo=next.js)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111111)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=111111)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/) [![Mercado Pago](https://img.shields.io/badge/Mercado%20Pago-Checkout-009EE3?style=for-the-badge)](https://www.mercadopago.com.br/) [![Vercel](https://img.shields.io/badge/Vercel-Production-111111?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/) [![Mercado Pago](https://img.shields.io/badge/Mercado%20Pago-Checkout-009EE3?style=for-the-badge)](https://www.mercadopago.com.br/) [![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-**⚡ Full-stack · 🔐 Security-first · 💳 Payments · 📦 Inventory · 👑 Admin · ☁️ Cloud**
+**⚡ Performance · 🔐 Security-first · 💳 Payments · 📦 Inventory · 👑 Admin · ☁️ Cloud**
 
-<br/>
-
-<a href="https://www.canva.com/d/l3K1BCLrMlMFhlp"><strong>🎨 Ver identidade visual no Canva →</strong></a>
-
-</div>
-
----
-
-## ✨ Uma loja pensada como produto
-
-> **Não é apenas um catálogo. É uma plataforma de comércio.**
-
-A **Loja** combina uma interface moderna com uma arquitetura full-stack orientada a segurança. O cliente navega, pesquisa, adiciona produtos ao carrinho e compra; enquanto as regras críticas — preço, estoque, autorização e pagamento — são protegidas no servidor e no banco.
-
-<div align="center">
-
-| 🛒 Compra | 🔐 Segurança | ⚡ Performance | 📊 Gestão |
-|:---:|:---:|:---:|:---:|
-| Catálogo → Checkout | RLS + Auth | Next.js + Vercel | Admin + Estoque |
+<p>
+  <a href="https://loja-nine-gold.vercel.app/">🚀 Demo</a> •
+  <a href="https://www.canva.com/d/l3K1BCLrMlMFhlp">🎨 Brand Deck</a> •
+  <a href="https://github.com/XzGuuhXz/loja/issues">🐛 Issues</a>
+</p>
 
 </div>
 
 ---
 
-## 🎨 Identidade visual
+## ✨ Sobre o projeto
 
-A identidade foi criada para transmitir **confiança, tecnologia e conversão**, com linguagem premium e limpa.
+> **Uma loja não deve apenas vender produtos. Ela precisa transmitir confiança em cada etapa da compra.**
 
-**Direção:** grafite · branco · verde-esmeralda · azul-ciano · alto contraste · espaço em branco · cards de produto · microinterações.
+A **Loja** é uma plataforma de e-commerce construída com foco em experiência, segurança e evolução. O frontend entrega uma jornada rápida e intuitiva, enquanto regras críticas — **preço, estoque, autorização e pagamentos** — permanecem protegidas no servidor e no banco de dados.
 
-> 🎨 **Brand deck:** [abrir a apresentação visual da Loja no Canva](https://www.canva.com/d/l3K1BCLrMlMFhlp)
+### 🎯 O que a Loja resolve
+
+| 🛒 Para o cliente | 🧑‍💼 Para o negócio | 🛡️ Para a plataforma |
+|:---:|:---:|:---:|
+| Catálogo intuitivo | Gestão de produtos | RLS + Auth |
+| Busca e filtros | Estoque | Server-side validation |
+| Carrinho | Pedidos | Webhook HMAC |
+| Checkout | Administração | Secrets protegidos |
+
+---
+
+## 🧭 Navegue pelo README
+
+<details open>
+<summary><strong>📚 Índice</strong></summary>
+
+- [✨ Sobre](#-sobre-o-projeto)
+- [🚀 Funcionalidades](#-funcionalidades)
+- [🎨 Identidade visual](#-identidade-visual)
+- [🏗️ Arquitetura](#️-arquitetura)
+- [🔐 Segurança](#-segurança)
+- [💳 Pagamentos](#-pagamentos)
+- [🗄️ Banco de dados](#️-banco-de-dados)
+- [📁 Estrutura](#-estrutura-do-projeto)
+- [🧑‍💻 Desenvolvimento](#-desenvolvimento-local)
+- [☁️ Deploy](#️-deploy)
+- [📊 Status](#-status-atual)
+- [🤝 Contribuição](#-contribuição)
+
+</details>
 
 ---
 
 ## 🚀 Funcionalidades
 
-### Experiência de compra
+### 🛍️ Experiência de compra
 
 - 🏪 Catálogo de produtos
 - 🔎 Busca e filtros por categoria
-- 🖼️ Imagens via Supabase Storage
-- 🛒 Carrinho
+- 🖼️ Imagens com Supabase Storage
+- 🛒 Carrinho de compras
 - 👤 Cadastro, login e sessão
-- 📦 Pedidos e histórico de compras
-- 💳 Checkout com Mercado Pago
+- 📦 Histórico e acompanhamento de pedidos
+- 💳 Checkout integrado ao Mercado Pago
 
-### Operação
+### 👑 Operação e administração
 
-- 👑 Painel administrativo
-- 📋 CRUD de produtos e categorias
+- 📋 CRUD de produtos
+- 🗂️ CRUD de categorias
 - 📊 Controle de estoque
-- 🔏 Webhook de pagamentos com HMAC
-- 🛡️ RLS e políticas PostgreSQL
-- ⚙️ Validação server-side
+- 🖼️ Upload e gerenciamento de imagens
+- 📦 Gestão de pedidos
+- 🔐 Autorização administrativa server-side
+
+### ⚙️ Engenharia
+
+- 🛡️ PostgreSQL + Row Level Security
+- 🔏 Webhook de pagamento com HMAC
+- ✅ Validação server-side com Zod
+- 🔑 Secrets restritos ao servidor
+- 🌐 Security headers
 - 🔄 CI com lint e build
 - ☁️ Deploy preparado para Vercel
 
 ---
 
-## 🧭 Jornada do cliente
+## 🎨 Identidade visual
 
-```mermaid
-flowchart LR
-    A[🏠 Loja] --> B[🔎 Explorar]
-    B --> C[📦 Produto]
-    C --> D[🛒 Carrinho]
-    D --> E[🔐 Checkout]
-    E --> F[💳 Mercado Pago]
-    F --> G[🔏 Webhook HMAC]
-    G --> H[✅ Pedido confirmado]
+A Loja utiliza uma identidade **premium, tecnológica e limpa**, pensada para transmitir segurança sem perder conversão.
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│  LOJA                                                         │
+│  Construída para vender. Projetada para crescer.              │
+│                                                              │
+│  █ Grafite       █ Branco       █ Esmeralda       █ Ciano     │
+│                                                              │
+│  Alto contraste • Espaço em branco • Cards • Microinterações  │
+└──────────────────────────────────────────────────────────────┘
 ```
+
+🎨 **Apresentação da identidade:** [abrir o Brand Deck no Canva](https://www.canva.com/d/l3K1BCLrMlMFhlp)
 
 ---
 
 ## 🏗️ Arquitetura
 
 ```mermaid
-flowchart TB
-    U[👤 Cliente] --> N[Next.js / React]
-    N --> API[⚙️ Route Handlers]
-    API --> AUTH[🔐 Supabase Auth]
+flowchart LR
+    C[👤 Cliente] --> W[🌐 Next.js]
+    W --> API[⚙️ Route Handlers]
+    API --> A[🔐 Supabase Auth]
     API --> DB[(🗄️ PostgreSQL)]
-    API --> STORAGE[🖼️ Supabase Storage]
+    API --> S[🖼️ Storage]
     API --> MP[💳 Mercado Pago]
-    MP --> WEBHOOK[🔏 Webhook HMAC]
-    WEBHOOK --> DB
-    DB --> RLS[🛡️ RLS / Policies]
-    N --> V[☁️ Vercel]
+    MP --> WH[🔏 Webhook HMAC]
+    WH --> DB
+    DB --> RLS[🛡️ RLS Policies]
+    W --> V[☁️ Vercel]
 ```
 
-### Stack
+### 🧰 Stack tecnológica
 
-| Tecnologia | Responsabilidade |
+| Tecnologia | Papel |
 |---|---|
-| **Next.js 15** | Framework full-stack |
-| **React 19** | Interface |
-| **TypeScript** | Tipagem estática |
-| **Tailwind CSS** | Estilos |
+| **Next.js 15** | Framework full-stack e App Router |
+| **React 19** | Interface e componentes |
+| **TypeScript** | Tipagem e segurança de código |
+| **Tailwind CSS** | Sistema visual |
 | **Supabase Auth** | Autenticação |
-| **PostgreSQL** | Persistência |
+| **PostgreSQL** | Banco de dados |
 | **Supabase Storage** | Imagens |
 | **Zod** | Validação |
 | **Mercado Pago** | Pagamentos |
-| **Vercel** | Deploy / hosting |
+| **Vercel** | Hosting e deploy |
 | **GitHub Actions** | CI |
 
 ---
 
-## 🔐 Security-first
+## 🔐 Segurança
 
-A segurança é parte da arquitetura — não uma camada adicionada depois.
+> **Security-first:** o frontend nunca é tratado como autoridade para dados críticos.
 
-| Camada | Proteção |
+| Área | Estratégia |
 |---|---|
-| 🔐 Identidade | Supabase Auth |
+| 🔐 Autenticação | Supabase Auth |
 | 🛡️ Banco | PostgreSQL + RLS |
-| 👑 Admin | Autorização server-side + `private.is_admin()` |
-| 💰 Preços | Dados confiáveis do banco |
-| 📦 Estoque | Controle transacional |
+| 👑 Administração | Autorização server-side |
+| 💰 Preços | Validação baseada no banco |
+| 📦 Estoque | Operações protegidas no backend |
 | 💳 Checkout | Preferência criada no servidor |
-| 🔏 Webhook | Assinatura HMAC |
-| 🔑 Secrets | Service Role restrita ao servidor |
-| 🖼️ Uploads | MIME types + limite de 5 MiB |
+| 🔏 Webhook | HMAC |
+| 🔑 Service Role | Apenas server-side |
+| 🖼️ Upload | MIME + limite de tamanho |
 | 🌐 HTTP | Security headers |
 | 🚫 Git | Segredos fora do repositório |
 
-> **Regra de ouro:** o frontend nunca deve ser a autoridade para preço, estoque, permissões ou credenciais.
+---
+
+## 💳 Pagamentos
+
+```mermaid
+sequenceDiagram
+    participant U as 👤 Cliente
+    participant A as ⚙️ API
+    participant MP as 💳 Mercado Pago
+    participant WH as 🔏 Webhook
+    participant DB as 🗄️ PostgreSQL
+
+    U->>A: Finaliza compra
+    A->>DB: Valida pedido / estoque
+    A->>MP: Cria preferência
+    MP-->>U: Checkout
+    MP->>WH: Evento assinado
+    WH->>WH: Valida HMAC
+    WH->>DB: Atualiza pagamento/pedido
+```
+
+As credenciais do Mercado Pago permanecem **server-only**.
 
 ---
 
-## 🗄️ Modelo de dados
+## 🗄️ Banco de dados
 
 ```text
 profiles
@@ -155,33 +203,13 @@ carts
    └── cart_items ─── products
 ```
 
-Principais tabelas: `profiles` · `categories` · `products` · `product_images` · `carts` · `cart_items` · `addresses` · `orders` · `order_items`
+Principais entidades:
+
+`profiles` · `addresses` · `categories` · `products` · `product_images` · `carts` · `cart_items` · `orders` · `order_items`
 
 ---
 
-## 💳 Pagamentos
-
-```text
-Carrinho → API server-side → validações → preferência
-                                      ↓
-                                Mercado Pago
-                                      ↓
-                                  pagamento
-                                      ↓
-                              webhook assinado
-                                      ↓
-                                validação HMAC
-                                      ↓
-                              pedido atualizado
-```
-
-Endpoint do webhook: `/api/pagamento/webhook`
-
-Secrets do Mercado Pago permanecem **server-only**.
-
----
-
-## 📁 Estrutura
+## 📁 Estrutura do projeto
 
 ```text
 loja/
@@ -195,10 +223,12 @@ loja/
 │   ├── error.tsx
 │   ├── layout.tsx
 │   └── page.tsx
+│
 ├── components/
 ├── lib/supabase/
 ├── supabase/migrations/
 ├── public/
+├── assets/
 ├── .github/workflows/
 ├── .env.example
 ├── next.config.ts
@@ -217,7 +247,7 @@ npm install
 npm run dev
 ```
 
-Configure `.env.local` a partir do `.env.example`:
+Crie `.env.local` usando `.env.example` como referência:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=seu_url_publico
@@ -228,22 +258,31 @@ MERCADOPAGO_ACCESS_TOKEN=
 MERCADOPAGO_WEBHOOK_SECRET=
 ```
 
-Validação:
+Valide antes de publicar:
 
 ```bash
 npm run lint
 npm run build
 ```
 
-> ⚠️ Nunca faça commit de valores reais das variáveis de ambiente.
+> ⚠️ **Nunca** commite valores reais de secrets.
 
 ---
 
 ## ☁️ Deploy
 
-A aplicação está preparada para **Vercel + Supabase**.
+A arquitetura foi preparada para **Vercel + Supabase**.
 
-Variáveis necessárias em **Production**:
+```mermaid
+flowchart LR
+    P[📤 git push] --> CI[⚙️ GitHub Actions]
+    CI --> L[🔎 Lint]
+    L --> B[🏗️ Build]
+    B --> V[☁️ Vercel]
+    V --> PROD[🚀 Production]
+```
+
+### Variáveis de Production
 
 ```text
 NEXT_PUBLIC_SUPABASE_URL
@@ -252,15 +291,6 @@ SUPABASE_SERVICE_ROLE_KEY
 NEXT_PUBLIC_SITE_URL
 MERCADOPAGO_ACCESS_TOKEN
 MERCADOPAGO_WEBHOOK_SECRET
-```
-
-```mermaid
-flowchart LR
-    A[git push] --> B[GitHub Actions]
-    B --> C[Lint]
-    C --> D[Build]
-    D --> E[Vercel]
-    E --> F[🚀 Production]
 ```
 
 ---
@@ -275,40 +305,40 @@ flowchart LR
 | Carrinho | ✅ |
 | Autenticação | ✅ |
 | Pedidos | ✅ |
-| Área administrativa | ✅ |
-| CRUD de produtos | ✅ |
-| CRUD de categorias | ✅ |
+| Administração | ✅ |
+| Produtos / categorias | ✅ |
 | Storage / imagens | ✅ |
 | Estoque | ✅ |
 | Checkout | ✅ |
 | Mercado Pago | ✅ |
 | Webhook HMAC | ✅ |
 | RLS | ✅ |
-| Headers de segurança | ✅ |
 | CI / Build | ✅ |
-| Production Vercel | ⚠️ Secrets necessários |
+| Production | ⚠️ Configuração de secrets |
 
-> O código e a infraestrutura continuam em evolução. A publicação funcional em Production depende da configuração dos secrets da Vercel.
+> O projeto está em evolução. A publicação funcional em Production depende da configuração das variáveis necessárias na Vercel.
 
 ---
 
 ## 🧪 Checklist de produção
 
-- [ ] Configurar variáveis Production na Vercel
+- [ ] Configurar secrets de Production
 - [ ] Configurar domínio oficial
 - [ ] Configurar webhook do Mercado Pago
-- [ ] Validar login e cadastro
-- [ ] Testar carrinho e estoque
+- [ ] Testar autenticação
+- [ ] Testar catálogo e filtros
+- [ ] Testar carrinho
+- [ ] Testar estoque
 - [ ] Testar checkout
-- [ ] Testar retorno do webhook
-- [ ] Confirmar RLS e permissões
-- [ ] Executar lint e build
+- [ ] Validar webhook HMAC
+- [ ] Revisar RLS
+- [ ] Executar lint + build
 - [ ] Fazer deploy
 - [ ] Validar aplicação publicada
 
 ---
 
-## 🤝 Contribuindo
+## 🤝 Contribuição
 
 ```bash
 git checkout -b feature/minha-melhoria
@@ -317,7 +347,7 @@ git commit -m "feat: minha melhoria"
 git push origin feature/minha-melhoria
 ```
 
-Depois, abra um Pull Request para revisão.
+Depois, abra um Pull Request.
 
 ---
 
@@ -329,6 +359,6 @@ Depois, abra um Pull Request para revisão.
 
 **Simple for customers. Powerful for business. Secure by architecture.**
 
-⭐ Se o projeto for útil, deixe uma estrela no repositório.
+⭐ Se este projeto foi útil, considere deixar uma estrela.
 
 </div>
