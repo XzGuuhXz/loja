@@ -24,6 +24,31 @@ npm run build
 npm run dev
 ```
 
+### Supabase CLI
+
+Para vincular o desenvolvimento local ao projeto remoto:
+
+```bash
+supabase login
+supabase init
+supabase link --project-ref rfzaogerwwyyaexvgkqd
+```
+
+Como o projeto remoto já possui histórico de migrations, capture o schema remoto antes de usar `db push`:
+
+```bash
+supabase db pull
+supabase migration list
+```
+
+Depois valide localmente com `supabase db reset` somente no banco local. Para produção, nunca use `supabase db reset --linked`; use `supabase db push` apenas depois de conferir o `migration list` e o `db push --dry-run`.
+
+Gere os tipos TypeScript do banco quando o schema mudar:
+
+```bash
+supabase gen types --lang typescript --linked > database.types.ts
+```
+
 ## Admin
 
 Novos usuários entram como `customer`. Para promover um usuário a admin, faça isso somente por uma conexão administrativa segura no Supabase:
@@ -73,6 +98,8 @@ MERCADOPAGO_ACCESS_TOKEN
 MERCADOPAGO_WEBHOOK_SECRET
 ```
 
+As variáveis reais ficam somente na Vercel e no `.env.local` da máquina de desenvolvimento. Não commite `.env`, `.env.local`, `.env.production` ou qualquer outro arquivo de ambiente com valores reais. O `.gitignore` mantém esses arquivos fora do Git e preserva apenas os exemplos.
+
 Depois de salvar as variáveis, faça um novo deploy. O projeto conectado ao GitHub será atualizado automaticamente por push na `main`.
 
 ## Segurança
@@ -84,9 +111,10 @@ Depois de salvar as variáveis, faça um novo deploy. O projeto conectado ao Git
 - Estoque é bloqueado durante a confirmação do pedido.
 - Funções sensíveis têm `EXECUTE` restrito aos papéis necessários.
 - Uploads de Storage são restritos a administradores por política do Storage.
+- Bucket de imagens aceita apenas formatos de imagem definidos e possui limite de 5 MiB por arquivo.
 - Webhook do Mercado Pago valida assinatura HMAC antes de alterar pedidos.
 - Service role é usado apenas em código server-side.
-- `.env*` local não deve ser versionado com segredos.
+- Arquivos `.env*` locais não devem ser versionados com segredos.
 - Headers de segurança configurados no Next.js.
 
 Após alterações no banco, revise também o Security Advisor do Supabase.
