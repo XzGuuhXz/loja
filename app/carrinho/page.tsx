@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { checkout } from '../actions';
 
-type Item = { product_id: string; name: string; price: number; quantity: number };
+type Item = { product_id: string; name: string; price: number; quantity: number; image?: string | null; image_alt?: string | null };
 type Address = { recipient_name: string; street: string; number: string; complement: string; neighborhood: string; city: string; state: string; postal_code: string };
 
 const emptyAddress: Address = { recipient_name: '', street: '', number: '', complement: '', neighborhood: '', city: '', state: '', postal_code: '' };
@@ -55,7 +55,15 @@ export default function Cart() {
     <a href="/" className="back-link">← Continuar comprando</a>
     <div className="page-title"><p className="eyebrow">SEU PEDIDO</p><h1>Carrinho</h1></div>
     {items.length === 0 ? <section className="empty-state"><div>🛒</div><h2>Seu carrinho está vazio</h2><p>Adicione produtos para começar sua compra.</p><a className="primary-btn" href="/#produtos">Ver produtos →</a></section> : <div className="checkout-layout">
-      <section className="panel"><h2>Itens</h2>{items.map((item) => <div className="cart-row" key={item.product_id}><div><strong>{item.name}</strong><small>Preço exibido: R$ {Number(item.price).toFixed(2).replace('.', ',')}</small></div><div className="cart-controls"><input aria-label={`Quantidade de ${item.name}`} type="number" min={1} max={100} value={item.quantity} onChange={(e) => save(items.map((x) => x.product_id === item.product_id ? { ...x, quantity: Number(e.target.value) } : x))}/><button type="button" onClick={() => save(items.filter((x) => x.product_id !== item.product_id))}>Remover</button></div></div>)}<div className="cart-total"><span>Total estimado</span><strong>R$ {total.toFixed(2).replace('.', ',')}</strong></div></section>
+      <section className="panel"><h2>Itens</h2>{items.map((item) => <div className="cart-row" key={item.product_id}>
+        <div className="cart-product">
+          <div className="cart-product-image">
+            {item.image ? <img src={item.image} alt={item.image_alt || item.name} loading="lazy" /> : <span>{item.name.slice(0, 1).toUpperCase()}</span>}
+          </div>
+          <div className="cart-product-info"><strong>{item.name}</strong><small>Preço exibido: R$ {Number(item.price).toFixed(2).replace('.', ',')}</small></div>
+        </div>
+        <div className="cart-controls"><input aria-label={`Quantidade de ${item.name}`} type="number" min={1} max={100} value={item.quantity} onChange={(e) => save(items.map((x) => x.product_id === item.product_id ? { ...x, quantity: Number(e.target.value) } : x))}/><button type="button" onClick={() => save(items.filter((x) => x.product_id !== item.product_id))}>Remover</button></div>
+      </div>)}<div className="cart-total"><span>Total estimado</span><strong>R$ {total.toFixed(2).replace('.', ',')}</strong></div></section>
       <section className="panel"><h2>Entrega</h2><div className="form-grid">{fields.map(([key, label]) => <label key={key}>{label}<input required={key !== 'complement'} value={address[key]} maxLength={key === 'state' ? 2 : 160} onChange={(e) => setAddress({ ...address, [key]: e.target.value })}/></label>)}</div><button className="primary-btn full" type="button" disabled={loading} onClick={finish}>{loading ? 'Processando...' : 'Finalizar pedido'}</button>{msg && <p className="form-message">{msg}</p>}{paymentUrl && <a className="primary-btn full" href={paymentUrl}>Pagar com Mercado Pago →</a>}<p className="secure-note">🔒 O valor final é recalculado no servidor. O navegador nunca define preço ou estoque.</p></section>
     </div>}
   </main>;
