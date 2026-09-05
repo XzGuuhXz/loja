@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 function siteUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
@@ -59,10 +60,16 @@ export async function POST(_request: Request, { params }: { params: Promise<{ or
   const preference = await response.json() as { id?: string; init_point?: string };
   if (!preference.id || !preference.init_point) return NextResponse.json({ error: 'Resposta inválida do gateway.' }, { status: 502 });
 
-  const { error: saveError } = await supabase.rpc('set_payment_preference', {
-    p_order_id: orderId,
-    p_preference_id: preference.id
-  });
+  // The user/order ownership was already checked above with the session client.
+  // Persist the gateway ID with the service-role client instead of exposing a
+  // SECURITY DEFINER RPC through PostgREST.
+  const admin = createAdminClient();
+  const { error: saveError } = await admin
+    .from('orders')
+    .update({ payment_provider: 'mercado_pago', payment_preference_id: preference.id })
+    .eq('id', orderId)
+    .eq('user_id', user.id)
+    .eq('status', 'pending');
   if (saveError) return NextResponse.json({ error: 'Pagamento criado, mas não foi possível registrar o pedido.' }, { status: 500 });
 
   return NextResponse.json({ preferenceId: preference.id, initPoint: preference.init_point });
