@@ -2,171 +2,158 @@
 
 <div align="center">
 
-### E-commerce moderno, seguro e pronto para produção
+### E-commerce moderno, seguro e escalável
 
-**Next.js · TypeScript · Supabase · PostgreSQL · Mercado Pago · Vercel**
+Uma loja virtual construída com **Next.js, TypeScript, Supabase, PostgreSQL, Mercado Pago e Vercel**, com foco em segurança, experiência de compra e arquitetura server-side.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ecf8e?logo=supabase)](https://supabase.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-ready-black?logo=vercel)](https://vercel.com/)
-[![Mercado Pago](https://img.shields.io/badge/Mercado%20Pago-checkout-009ee3)](https://www.mercadopago.com.br/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com/)
+[![Mercado Pago](https://img.shields.io/badge/Mercado%20Pago-Checkout-009EE3)](https://www.mercadopago.com.br/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deploy-black?logo=vercel)](https://vercel.com/)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)](https://github.com/XzGuuhXz/loja/actions)
 
-**Uma base completa para uma loja virtual com catálogo, autenticação, carrinho, pedidos, administração, estoque e pagamentos online.**
+**Catálogo · Autenticação · Carrinho · Pedidos · Admin · Estoque · Pagamentos**
 
 </div>
 
 ---
 
-## ✨ Visão geral
+## 📌 Sobre o projeto
 
-A **Loja** foi construída com foco em uma experiência de compra simples no frontend e regras críticas protegidas no backend.
+A **Loja** é uma aplicação de e-commerce full-stack projetada para separar responsabilidades entre navegador, servidor e banco de dados.
+
+O objetivo é manter a experiência do cliente simples enquanto regras críticas — como preços, estoque, autorização administrativa e pagamentos — são verificadas no servidor.
+
+### ✨ Principais recursos
+
+- 🏪 Catálogo de produtos
+- 🔎 Busca e filtros por categoria
+- 🖼️ Imagens de produtos via Supabase Storage
+- 🛒 Carrinho de compras
+- 👤 Cadastro, login e sessão de usuário
+- 📦 Criação e acompanhamento de pedidos
+- 🧾 Histórico de compras
+- 👑 Painel administrativo
+- 📋 CRUD de produtos e categorias
+- 📊 Controle de estoque
+- 💳 Checkout com Mercado Pago
+- 🔏 Webhook de pagamento com validação HMAC
+- 🛡️ RLS e políticas de acesso no PostgreSQL
+- ⚡ Deploy preparado para Vercel
+- 🔄 CI com lint e build
+
+---
+
+## 🧭 Fluxo da aplicação
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                         🛍️ LOJA                            │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  🏠 Home / Catálogo                                         │
-│       │                                                     │
-│       ├── 🔎 Busca e filtros                                │
-│       ├── 🏷️ Categorias                                     │
-│       └── 📦 Página do produto                              │
-│                    │                                        │
-│                    ▼                                        │
-│               🛒 Carrinho                                   │
-│                    │                                        │
-│                    ▼                                        │
-│              💳 Checkout                                    │
-│                    │                                        │
-│          ┌─────────┴─────────┐                              │
-│          ▼                   ▼                              │
-│   🗄️ PostgreSQL       💰 Mercado Pago                       │
-│          │                   │                              │
-│          └─────────┬─────────┘                              │
-│                    ▼                                        │
-│              📦 Pedido confirmado                           │
-│                                                             │
-├─────────────────────────────────────────────────────────────┤
-│ 🔐 Supabase Auth · RLS · Storage · API · Webhooks           │
-└─────────────────────────────────────────────────────────────┘
+                         🛍️ LOJA
+                            │
+             ┌──────────────┼──────────────┐
+             ▼              ▼              ▼
+          Catálogo       Autenticação    Administração
+             │              │              │
+             ▼              ▼              ▼
+          Produto        Cliente          Admin
+             │              │              │
+             └──────────────┼──────────────┘
+                            ▼
+                         🛒 Carrinho
+                            │
+                            ▼
+                       💳 Checkout
+                            │
+                 ┌──────────┴──────────┐
+                 ▼                     ▼
+          PostgreSQL              Mercado Pago
+                 │                     │
+                 └──────────┬──────────┘
+                            ▼
+                       📦 Pedido
+                            │
+                            ▼
+                    🔏 Webhook HMAC
 ```
 
 ---
 
-## 🎨 Interface e experiência
-
-- 📱 **Layout responsivo** para desktop, tablet e celular.
-- 🔎 Busca e filtros por categoria.
-- 🖼️ Galeria de imagens dos produtos.
-- 🛒 Carrinho com atualização de quantidade.
-- 👤 Cadastro, login, logout e área do cliente.
-- 📋 Histórico de pedidos.
-- ⚡ Renderização moderna com Next.js.
-- 🧭 Rotas protegidas no servidor.
-- ♿ Estrutura preparada para uma experiência acessível.
-
----
-
-## 🧩 Estrutura funcional do site
-
-### 🏪 Área pública
-
-| Área | Função |
-|---|---|
-| **Home / Catálogo** | Exibe produtos, busca e categorias |
-| **Produto** | Detalhes, imagens, preço e estoque |
-| **Carrinho** | Produtos selecionados e quantidades |
-| **Login** | Autenticação do cliente |
-| **Cadastro** | Criação de conta como `customer` |
-
-### 👤 Área do cliente
-
-- Perfil autenticado.
-- Endereços de entrega.
-- Histórico de pedidos.
-- Acompanhamento do status do pedido.
-- Checkout integrado ao Mercado Pago.
-
-### 🛠️ Painel administrativo
-
-- CRUD de produtos.
-- CRUD de categorias.
-- Gerenciamento de imagens.
-- Edição de `alt text` das imagens.
-- Controle de estoque.
-- Gestão de pedidos.
-- Acesso protegido por papel `admin`.
-
----
-
-## 🔐 Arquitetura de segurança
-
-A aplicação foi estruturada para que operações críticas **não dependam da confiança no navegador**.
+## 🏗️ Arquitetura
 
 ```text
-                    🌐 Browser
-                        │
-                        ▼
-                 Next.js / Server
-                        │
-              ┌─────────┴─────────┐
-              ▼                   ▼
-        🔑 Supabase Auth      🛡️ Server Rules
-              │                   │
-              └─────────┬─────────┘
-                        ▼
-                  PostgreSQL
-                        │
-                       RLS
-                        │
-          ┌─────────────┼─────────────┐
-          ▼             ▼             ▼
-       Cliente        Admin        Checkout
-                                      │
-                                      ▼
-                               💳 Mercado Pago
-                                      │
-                                      ▼
-                                🔏 Webhook HMAC
+┌─────────────────────────────────────────────────────────┐
+│                      🌐 CLIENTE                         │
+│              Next.js / React / Tailwind                 │
+└──────────────────────────┬──────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────┐
+│                    ⚙️ SERVIDOR                          │
+│       Route Handlers · Auth · Validação · Regras        │
+└───────────────┬─────────────────────┬───────────────────┘
+                │                     │
+                ▼                     ▼
+       ┌────────────────┐    ┌────────────────────┐
+       │   Supabase     │    │   Mercado Pago     │
+       │ Auth/Postgres  │    │     Checkout       │
+       │    /Storage    │    │     Webhook        │
+       └───────┬────────┘    └─────────┬──────────┘
+               │                       │
+               └───────────┬───────────┘
+                           ▼
+                    🔐 Regras seguras
 ```
+
+---
+
+## 🔐 Segurança
+
+Segurança é tratada como parte da arquitetura, não apenas como uma camada do frontend.
 
 ### Proteções implementadas
 
-- 🔒 **RLS** habilitado nas tabelas de negócio.
-- 🧑‍💼 Função `is_admin()` protegida com `SECURITY DEFINER` e `search_path` controlado.
-- 🚫 Cadastro público não pode escolher o papel `admin`.
-- 💰 Checkout calcula preço e total a partir do banco, ignorando valores enviados pelo cliente.
-- 📦 Estoque é protegido de forma transacional durante o checkout.
-- 🔑 Funções sensíveis possuem `EXECUTE` restrito.
-- 🖼️ Storage possui políticas de acesso e limite de **5 MiB** para imagens.
-- 🧾 Uploads aceitam somente tipos de imagem definidos.
-- 🔏 Webhook do Mercado Pago valida assinatura HMAC antes de atualizar pedidos.
-- 🖥️ `SUPABASE_SERVICE_ROLE_KEY` permanece exclusivamente no servidor.
-- 🧱 Headers HTTP de segurança configurados no Next.js.
-- 🚫 Arquivos `.env*` não devem ser versionados com segredos.
+| Proteção | Implementação |
+|---|---|
+| 🔐 Autenticação | Supabase Auth |
+| 🛡️ Banco | PostgreSQL + Row Level Security (RLS) |
+| 👑 Administração | Autorização server-side + função privada `is_admin()` |
+| 💰 Preços | Calculados a partir dos dados confiáveis do banco |
+| 📦 Estoque | Controle transacional durante o checkout |
+| 💳 Pagamento | Preferência criada no servidor |
+| 🔏 Webhook | Validação de assinatura HMAC |
+| 🔑 Service Role | Restrita ao servidor |
+| 🖼️ Uploads | MIME types permitidos + limite de 5 MiB |
+| 🌐 HTTP | Headers de segurança configurados |
+| 🚫 Segredos | Fora do Git e fora de `NEXT_PUBLIC_*` |
+
+> **Importante:** nenhuma credencial real deve ser colocada no código-fonte, README, navegador ou GitHub.
 
 ---
 
 ## 🗄️ Banco de dados
 
-O backend utiliza **Supabase + PostgreSQL**.
+A persistência utiliza **Supabase + PostgreSQL**.
 
-### Principais entidades
+### Modelo principal
 
 ```text
 profiles
    │
    ├── addresses
    │
-   └── orders ─── order_items ─── products ─── categories
-                                      │
-                                      └── product_images
+   └── orders
+          │
+          └── order_items ─── products ─── categories
+                                  │
+                                  └── product_images
 
-carts ─── cart_items ─── products
+carts
+   │
+   └── cart_items ─── products
 ```
 
-Tabelas principais:
+### Tabelas principais
 
 - `profiles`
 - `categories`
@@ -178,206 +165,73 @@ Tabelas principais:
 - `orders`
 - `order_items`
 
+As regras de acesso são aplicadas no banco com **RLS**, reduzindo a dependência de validações feitas somente pelo cliente.
+
 ---
 
 ## 💳 Pagamentos
 
 A integração utiliza **Mercado Pago Checkout Pro**.
 
-Fluxo:
-
 ```text
 Cliente
-   │
-   ▼
+  │
+  ▼
 Carrinho
-   │
-   ▼
-Checkout seguro
-   │
-   ▼
-Pedido no PostgreSQL
-   │
-   ▼
-Preferência criada no servidor
-   │
-   ▼
-Mercado Pago
-   │
-   ▼
-Pagamento
-   │
-   ▼
-Webhook assinado
-   │
-   ▼
-Validação HMAC
-   │
-   ▼
-Atualização segura do pedido
+  │
+  ▼
+API do servidor
+  │
+  ├── valida usuário
+  ├── valida pedido
+  ├── consulta itens/preços
+  └── cria preferência
+          │
+          ▼
+     Mercado Pago
+          │
+          ▼
+       Pagamento
+          │
+          ▼
+    Webhook assinado
+          │
+          ▼
+     Validação HMAC
+          │
+          ▼
+ Atualização do pedido
 ```
 
-Configure o webhook do Mercado Pago para:
+Endpoint esperado do webhook:
 
 ```text
-https://SEU_DOMINIO/api/pagamento/webhook
+/api/pagamento/webhook
 ```
 
-O access token e a assinatura secreta são **server-only**.
+Os secrets do Mercado Pago são **server-only**.
 
 ---
 
-## ⚙️ Stack
+## 🧰 Stack
 
-| Tecnologia | Uso |
+| Tecnologia | Papel |
 |---|---|
-| **Next.js 15** | Framework web |
-| **React 19** | Interface |
+| **Next.js 15** | Framework full-stack |
+| **React 19** | Interface de usuário |
 | **TypeScript** | Tipagem estática |
 | **Tailwind CSS** | Estilização |
-| **Supabase** | Auth, PostgreSQL e Storage |
-| **PostgreSQL** | Persistência e regras transacionais |
-| **Zod** | Validação de dados |
+| **Supabase Auth** | Autenticação |
+| **PostgreSQL** | Banco de dados |
+| **Supabase Storage** | Imagens |
+| **Zod** | Validação |
 | **Mercado Pago** | Pagamentos |
 | **Vercel** | Deploy e hospedagem |
 | **GitHub Actions** | CI |
 
 ---
 
-## 🚀 Desenvolvimento local
-
-### 1. Instale as dependências
-
-```bash
-npm install
-```
-
-### 2. Configure o ambiente
-
-Copie `.env.example` para `.env.local`:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=seu_url_publico
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua_chave_publica
-SUPABASE_SERVICE_ROLE_KEY=chave_apenas_no_servidor
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-MERCADOPAGO_ACCESS_TOKEN=
-MERCADOPAGO_WEBHOOK_SECRET=
-```
-
-> ⚠️ Nunca publique os valores reais dessas variáveis no GitHub.
-
-### 3. Execute
-
-```bash
-npm run dev
-```
-
-Abra `http://localhost:3000` no navegador.
-
-### 4. Valide antes do deploy
-
-```bash
-npm run lint
-npm run build
-```
-
----
-
-## 🗃️ Supabase CLI
-
-Vincule o ambiente local ao projeto remoto:
-
-```bash
-supabase login
-supabase init
-supabase link --project-ref rfzaogerwwyyaexvgkqd
-```
-
-Como o banco remoto já possui histórico de migrations, sincronize antes de aplicar mudanças:
-
-```bash
-supabase db pull
-supabase migration list
-```
-
-### ⚠️ Produção
-
-Nunca use:
-
-```bash
-supabase db reset --linked
-```
-
-Antes de um `db push`, confira o histórico e valide as alterações. O reset deve ser utilizado somente no banco local de desenvolvimento.
-
-Para gerar os tipos TypeScript:
-
-```bash
-supabase gen types --lang typescript --linked > database.types.ts
-```
-
----
-
-## 👑 Administração
-
-Novos usuários entram como `customer`.
-
-A promoção para administrador deve ocorrer por uma conexão administrativa segura no Supabase:
-
-```sql
-update public.profiles
-set role = 'admin'
-where id = 'UUID_DO_USUARIO';
-```
-
-> 🔐 Nunca exponha `service_role`, `SUPABASE_SERVICE_ROLE_KEY` ou qualquer secret no navegador, GitHub ou em variáveis `NEXT_PUBLIC_*`.
-
----
-
-## ☁️ Deploy na Vercel
-
-Configure no ambiente **Production** e, quando necessário, também em **Preview**:
-
-```text
-NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-SUPABASE_SERVICE_ROLE_KEY
-NEXT_PUBLIC_SITE_URL
-MERCADOPAGO_ACCESS_TOKEN
-MERCADOPAGO_WEBHOOK_SECRET
-```
-
-As credenciais reais devem existir somente na Vercel e no ambiente local apropriado.
-
-Depois de alterar variáveis de ambiente, faça um novo deploy para que a nova configuração seja aplicada.
-
----
-
-## 🔄 CI/CD
-
-O projeto possui validações automatizadas para ajudar a impedir que código quebrado chegue à produção.
-
-```text
-Git push
-   │
-   ▼
-GitHub Actions
-   │
-   ├── npm install
-   ├── lint
-   └── build
-          │
-          ▼
-       Vercel
-          │
-          ▼
-      Production 🚀
-```
-
----
-
-## 📁 Organização do projeto
+## 📁 Estrutura do projeto
 
 ```text
 loja/
@@ -390,8 +244,8 @@ loja/
 │   ├── pedidos/
 │   ├── produtos/
 │   ├── error.tsx
-│   ├── page.tsx
-│   └── layout.tsx
+│   ├── layout.tsx
+│   └── page.tsx
 │
 ├── components/
 ├── lib/
@@ -409,46 +263,222 @@ loja/
 
 ---
 
-## 📌 Status do projeto
+## 🚀 Rodando localmente
+
+### 1. Clone o projeto
+
+```bash
+git clone https://github.com/XzGuuhXz/loja.git
+cd loja
+```
+
+### 2. Instale as dependências
+
+```bash
+npm install
+```
+
+### 3. Configure as variáveis de ambiente
+
+Crie `.env.local` a partir do `.env.example`:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=seu_url_publico
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua_chave_publica
+SUPABASE_SERVICE_ROLE_KEY=chave_apenas_no_servidor
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+MERCADOPAGO_ACCESS_TOKEN=
+MERCADOPAGO_WEBHOOK_SECRET=
+```
+
+> ⚠️ Nunca faça commit dos valores reais dessas variáveis.
+
+### 4. Inicie o ambiente de desenvolvimento
+
+```bash
+npm run dev
+```
+
+A aplicação ficará disponível em `http://localhost:3000`.
+
+### 5. Valide o projeto
+
+```bash
+npm run lint
+npm run build
+```
+
+---
+
+## 🗃️ Supabase
+
+Para trabalhar com as migrations:
+
+```bash
+supabase login
+supabase init
+supabase link --project-ref rfzaogerwwyyaexvgkqd
+supabase migration list
+```
+
+Antes de aplicar alterações em produção, confira cuidadosamente o histórico de migrations.
+
+Para gerar os tipos TypeScript:
+
+```bash
+supabase gen types --lang typescript --linked > database.types.ts
+```
+
+> 🚨 **Produção:** não use `supabase db reset --linked`. Reset deve ser reservado para bancos locais de desenvolvimento.
+
+---
+
+## 👑 Administração
+
+Usuários comuns entram como `customer`.
+
+A promoção para administrador deve ser realizada por uma conexão administrativa segura no Supabase:
+
+```sql
+update public.profiles
+set role = 'admin'
+where id = 'UUID_DO_USUARIO';
+```
+
+O frontend não deve permitir que um usuário escolha ou altere seu próprio papel para `admin`.
+
+---
+
+## ☁️ Deploy
+
+O projeto está estruturado para deploy na **Vercel**.
+
+### Variáveis de Production
+
+Configure no ambiente **Production**:
+
+```text
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+SUPABASE_SERVICE_ROLE_KEY
+NEXT_PUBLIC_SITE_URL
+MERCADOPAGO_ACCESS_TOKEN
+MERCADOPAGO_WEBHOOK_SECRET
+```
+
+Depois de alterar variáveis de ambiente, faça um novo deploy para aplicar a configuração.
+
+### Pipeline
+
+```text
+        git push
+            │
+            ▼
+     GitHub Actions
+            │
+       ┌────┴────┐
+       ▼         ▼
+      Lint      Build
+       │         │
+       └────┬────┘
+            ▼
+         Vercel
+            │
+            ▼
+       🚀 Production
+```
+
+---
+
+## 🔄 CI/CD
+
+O workflow do GitHub Actions executa validações antes da publicação:
+
+- ✅ Instalação das dependências
+- ✅ Lint
+- ✅ Build de produção
+- ✅ Runtime alinhado com Node.js 24
+
+---
+
+## 📊 Status atual
+
+> O código e a infraestrutura de segurança estão em evolução contínua. O deploy de produção depende das variáveis secretas configuradas na Vercel.
 
 | Módulo | Status |
 |---|:---:|
 | Catálogo | ✅ |
 | Busca e filtros | ✅ |
-| Produto | ✅ |
+| Página de produto | ✅ |
 | Carrinho | ✅ |
 | Autenticação | ✅ |
 | Pedidos | ✅ |
 | Área administrativa | ✅ |
 | CRUD de produtos | ✅ |
 | CRUD de categorias | ✅ |
-| Imagens / Storage | ✅ |
+| Storage / imagens | ✅ |
 | Controle de estoque | ✅ |
-| Checkout PostgreSQL | ✅ |
+| Checkout | ✅ |
 | Mercado Pago | ✅ |
 | Webhook HMAC | ✅ |
 | RLS | ✅ |
 | Headers de segurança | ✅ |
 | CI / Build | ✅ |
-| Deploy Vercel | 🚀 |
+| Configuração Production Vercel | ⚠️ Requer secrets |
 
 ---
 
 ## 🛡️ Checklist de segurança
 
 - [x] RLS nas tabelas de negócio
-- [x] Separação entre cliente e servidor
 - [x] Service Role somente server-side
-- [x] Checkout com preço calculado no banco
-- [x] Controle transacional de estoque
-- [x] Webhook com assinatura HMAC
+- [x] Checkout validado no servidor
+- [x] Preços confiáveis vindos do banco
+- [x] Controle de estoque transacional
+- [x] Webhook protegido por HMAC
 - [x] Policies do Storage
 - [x] Limite e MIME types para imagens
-- [x] Proteção de rotas administrativas
+- [x] Rotas administrativas protegidas
+- [x] Função administrativa fora do schema público
+- [x] Funções sensíveis com privilégios restritos
 - [x] Headers HTTP de segurança
 - [x] Segredos fora do Git
-- [x] Dependências Next.js/React atualizadas
-- [x] Lint e build no CI
+- [x] CI com lint e build
+
+---
+
+## 🧪 Antes de colocar em produção
+
+```text
+[ ] Configurar variáveis Production na Vercel
+[ ] Configurar domínio oficial
+[ ] Configurar webhook do Mercado Pago
+[ ] Validar login/cadastro
+[ ] Testar carrinho e estoque
+[ ] Testar checkout em ambiente apropriado
+[ ] Testar retorno do webhook
+[ ] Confirmar RLS e permissões
+[ ] Executar lint e build
+[ ] Fazer deploy
+[ ] Validar a aplicação publicada
+```
+
+---
+
+## 🤝 Desenvolvimento
+
+Contribuições, correções e melhorias são bem-vindas.
+
+Fluxo recomendado:
+
+```bash
+git checkout -b feature/minha-melhoria
+git add .
+git commit -m "feat: minha melhoria"
+git push origin feature/minha-melhoria
+```
+
+Depois, abra um Pull Request para revisão.
 
 ---
 
@@ -461,5 +491,7 @@ Projeto desenvolvido para a aplicação **Loja**.
 ### 🛍️ Loja
 
 **Construída para vender. Projetada para crescer. Protegida para produção.**
+
+⭐ Se este projeto for útil, considere deixar uma estrela no repositório.
 
 </div>
