@@ -6,7 +6,8 @@ function validSignature(signature:string|null,requestId:string|null,dataId:strin
   if(!signature||!requestId||!dataId)return false;
   const values=Object.fromEntries(signature.split(',').map(part=>{const [key,...rest]=part.trim().split('=');return [key,rest.join('=')]}));
   const ts=values.ts,v1=values.v1;if(!ts||!v1)return false;
-  const timestamp=Number(ts);if(!Number.isFinite(timestamp)||Math.abs(Date.now()/1000-timestamp)>300)return false;
+  const rawTimestamp=Number(ts);const timestamp=rawTimestamp>1e12?rawTimestamp/1000:rawTimestamp;
+  if(!Number.isFinite(timestamp)||Math.abs(Date.now()/1000-timestamp)>300)return false;
   const manifest=`id:${dataId};request-id:${requestId};ts:${ts};`;
   const expected=createHmac('sha256',secret).update(manifest).digest('hex');
   const a=Buffer.from(expected,'utf8'),b=Buffer.from(v1,'utf8');return a.length===b.length&&timingSafeEqual(a,b);
