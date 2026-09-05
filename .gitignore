@@ -1,9 +1,13 @@
 node_modules/
 .next/
 out/
+
+# Environment files — never commit secrets
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+!.env*.example
+
 .vercel/
 *.log
 .DS_Store
