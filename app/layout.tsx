@@ -1,6 +1,20 @@
 import type { Metadata } from 'next';
+import { DM_Serif_Display, Manrope } from 'next/font/google';
 import './globals.css';
 import './modern.css';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-display',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${manrope.variable} ${dmSerif.variable}`}>
       <body>{children}</body>
     </html>
   );
