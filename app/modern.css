@@ -40,6 +40,17 @@ footer { animation:loja-fade-up .5s ease both; }
 .desktop-nav a::after { content:''; position:absolute; left:0; right:0; bottom:-6px; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .22s ease; }
 .desktop-nav a:hover::after,.desktop-nav a:focus-visible::after { transform:scaleX(1); }
 
+/* Refined typography: warm editorial serif + clean modern sans */
+body { font-family:var(--font-sans), 'Helvetica Neue', Arial, sans-serif !important; font-feature-settings:'kern','liga','calt'; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+.hero h1,.section-heading h2,.page-title h1,.product-detail-info h1,.trust-banner h2,.auth-showcase-copy h1,.auth-card-head h2 { font-family:var(--font-sans), 'Helvetica Neue', Arial, sans-serif !important; font-weight:700; }
+.hero h1 em,.trust-banner h2 em,.auth-showcase-copy h1 em { font-family:var(--font-display), Georgia, serif !important; font-weight:400; letter-spacing:-.02em; }
+.brand { font-family:var(--font-sans), Arial, sans-serif !important; font-weight:800; letter-spacing:.14em; }
+.eyebrow,.announcement,.product-category,.category,.new-pill,.category-pill { font-family:var(--font-sans), Arial, sans-serif !important; }
+.eyebrow { letter-spacing:.16em; }
+.hero-text,.product-description,.trust-banner p,.footer-main > p { font-weight:500; }
+.product-info h3,.panel h2,.product-detail-info h1 { font-weight:700; }
+.product-bottom strong,.product-detail-info > strong,.cart-total { font-variant-numeric:tabular-nums; }
+
 /* Tactile, restrained controls */
 .primary-btn,.buy-btn,.category,.icon-action,.cart-action,.footer-links a,.search { transition:transform .18s ease,color .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease; }
 .primary-btn:hover,.buy-btn:hover { transform:translateY(-2px); box-shadow:0 7px 15px rgba(23,21,19,.12); }
