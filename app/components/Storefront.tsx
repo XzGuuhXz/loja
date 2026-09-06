@@ -64,7 +64,7 @@ export default function Storefront({ products }: { products: Product[] }) {
     itemListElement: filtered.slice(0, 12).map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      url: `/produto/${product.id}`,
+      url: product.id.startsWith('demo-') ? '/' : `/produto/${product.id}`,
       name: product.name,
     })),
   }), [filtered]);
@@ -133,20 +133,22 @@ export default function Storefront({ products }: { products: Product[] }) {
           <div className="product-grid">
             {filtered.map((product, index) => {
               const out = product.stock <= 0;
+              const isDemo = product.id.startsWith('demo-');
+              const productHref = isDemo ? '#produtos' : `/produto/${product.id}`;
               return (
                 <article className="product-card" key={product.id}>
-                  <a href={`/produto/${product.id}`} className={`product-image ${accents[index % accents.length]}`} aria-label={`Ver detalhes de ${product.name}`}>
+                  <a href={productHref} className={`product-image ${accents[index % accents.length]}`} aria-label={`Ver detalhes de ${product.name}`}>
                     {product.image ? <img src={product.image.url} alt={product.image.alt || product.name} loading={index < 4 ? 'eager' : 'lazy'} /> : <div className="abstract-product" aria-hidden="true">{['◈', '◇', '○', '△', '✦'][index % 5]}</div>}
                     <span className="category-pill">{categoryName(product.categories)}</span>
                     {index < 2 && <span className="new-pill">NOVO</span>}
                   </a>
                   <div className="product-info">
                     <p className="product-category">{categoryName(product.categories)}</p>
-                    <a href={`/produto/${product.id}`}><h3>{product.name}</h3></a>
+                    <a href={productHref}><h3>{product.name}</h3></a>
                     <p className="product-description">{product.description || 'Uma escolha especial para você.'}</p>
                     <div className="product-bottom">
                       <div><strong>{money(product.price)}</strong><small>{out ? 'Esgotado' : `${product.stock} disponíveis`}</small></div>
-                      <a className={out ? 'buy-btn disabled' : 'buy-btn'} href={out ? undefined : `/produto/${product.id}`} aria-disabled={out}>{out ? 'Esgotado' : 'Comprar'}</a>
+                      <a className={out ? 'buy-btn disabled' : 'buy-btn'} href={productHref} aria-disabled={out}>{out ? 'Esgotado' : 'Comprar'}</a>
                     </div>
                   </div>
                 </article>
