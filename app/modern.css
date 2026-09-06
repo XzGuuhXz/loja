@@ -1,0 +1,95 @@
+/* Modern interaction layer inspired by the referenced skill libraries. */
+
+@keyframes loja-fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loja-float {
+  0%, 100% { transform: translateY(0) rotate(7deg); }
+  50% { transform: translateY(-12px) rotate(7deg); }
+}
+
+@keyframes loja-orbit {
+  from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+
+@keyframes loja-shimmer {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+.hero-copy { animation: loja-fade-up .65s ease both; }
+.hero-art { animation: loja-fade-up .8s .08s ease both; }
+.hero-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.28), transparent);
+  transform: translateX(-120%);
+  animation: loja-shimmer 5s 1s ease-in-out infinite;
+  pointer-events: none;
+}
+.product-silhouette { animation: loja-float 4.5s ease-in-out infinite; }
+.orb-one { animation: loja-orbit 12s linear infinite; }
+.orb-two { animation: loja-orbit 15s linear infinite reverse; }
+
+.product-card { animation: loja-fade-up .5s ease both; }
+.product-card:nth-child(2) { animation-delay: .05s; }
+.product-card:nth-child(3) { animation-delay: .1s; }
+.product-card:nth-child(4) { animation-delay: .15s; }
+.product-card:nth-child(5) { animation-delay: .2s; }
+.product-card:nth-child(6) { animation-delay: .25s; }
+.product-card:nth-child(7) { animation-delay: .3s; }
+.product-card:nth-child(8) { animation-delay: .35s; }
+
+.primary-btn,
+.buy-btn,
+.category,
+.icon-action,
+.cart-action,
+.footer-links a,
+.desktop-nav a { transition: transform .2s ease, color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease; }
+
+.primary-btn:hover,
+.buy-btn:hover { box-shadow: 0 10px 24px rgba(23,21,31,.16); }
+
+.product-card:focus-within { border-color: #cfc5e8; box-shadow: 0 14px 34px rgba(37,24,61,.08); }
+
+.search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(109,69,216,.08); }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible { outline: 3px solid rgba(109,69,216,.35); outline-offset: 3px; }
+
+@media (max-width: 700px) {
+  .announcement { padding: 0 14px; text-align: center; font-size: 9px; }
+  .header-inner { height: 68px; padding: 0 18px; gap: 12px; }
+  .header-actions { gap: 10px; }
+  .search { width: min(42vw, 180px); }
+  .hero { padding-left: 18px; padding-right: 18px; }
+  .hero h1 { font-size: clamp(43px, 14vw, 64px); }
+  .catalog { padding-left: 18px; padding-right: 18px; }
+  .section-heading h2 { font-size: 30px; }
+  .product-grid { gap: 12px; }
+  .product-image { height: 190px; }
+  .product-info { padding: 14px; }
+  .product-info h3 { font-size: 14px; }
+  .product-description { min-height: 0; }
+  .trust-banner { margin-left: 18px; margin-right: 18px; padding: 40px 28px; }
+  .trust-banner h2 { font-size: 34px; }
+  .trust-stat { width: 115px; height: 115px; }
+  .footer-main, .footer-bottom { align-items: flex-start; flex-direction: column; gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
