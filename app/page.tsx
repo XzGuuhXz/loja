@@ -1,6 +1,75 @@
 import { createClient } from '@/lib/supabase/server';
 import Storefront from './components/Storefront';
 
+type DemoProduct = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+  categories: { name: string };
+  image: null;
+};
+
+// Fallback visual para a versão de demonstração. A Home continua navegável
+// mesmo quando a Vercel estiver sem as variáveis do Supabase.
+const demoProducts: DemoProduct[] = [
+  {
+    id: 'demo-fone-air',
+    name: 'Fone Air Pro',
+    description: 'Som imersivo, design leve e bateria para o dia inteiro.',
+    price: 349.9,
+    stock: 18,
+    categories: { name: 'Tecnologia' },
+    image: null,
+  },
+  {
+    id: 'demo-smartwatch-one',
+    name: 'Smartwatch One',
+    description: 'Seu dia organizado com estilo, praticidade e movimento.',
+    price: 499.9,
+    stock: 12,
+    categories: { name: 'Tecnologia' },
+    image: null,
+  },
+  {
+    id: 'demo-mochila-urban',
+    name: 'Mochila Urban',
+    description: 'Espaço inteligente para acompanhar sua rotina.',
+    price: 219.9,
+    stock: 24,
+    categories: { name: 'Acessórios' },
+    image: null,
+  },
+  {
+    id: 'demo-garrafa-termica',
+    name: 'Garrafa Térmica',
+    description: 'Temperatura ideal por mais tempo, onde você estiver.',
+    price: 129.9,
+    stock: 31,
+    categories: { name: 'Casa & Vida' },
+    image: null,
+  },
+  {
+    id: 'demo-luminaria',
+    name: 'Luminária Aura',
+    description: 'Luz ambiente minimalista para deixar seu espaço especial.',
+    price: 189.9,
+    stock: 9,
+    categories: { name: 'Casa & Vida' },
+    image: null,
+  },
+  {
+    id: 'demo-oculos',
+    name: 'Óculos Essential',
+    description: 'Visual marcante com uma estética limpa e contemporânea.',
+    price: 159.9,
+    stock: 16,
+    categories: { name: 'Acessórios' },
+    image: null,
+  },
+];
+
 export default async function Home() {
   try {
     const supabase = await createClient();
@@ -10,7 +79,10 @@ export default async function Home() {
       .eq('active', true)
       .order('created_at', { ascending: false });
 
-    if (error || !products) return <Storefront products={[]} />;
+    // Para a demonstração, não deixamos a ausência do banco transformar a
+    // vitrine em uma tela de erro. Se o Supabase não estiver configurado,
+    // exibimos conteúdo visual local e a experiência continua navegável.
+    if (error || !products?.length) return <Storefront products={demoProducts} />;
 
     const ids = products.map((product) => product.id);
     const { data: images } = ids.length
@@ -39,16 +111,6 @@ export default async function Home() {
     return <Storefront products={withImages} />;
   } catch (error) {
     console.error('Storefront initialization failed:', error);
-    return (
-      <main className="min-h-screen bg-white px-6 py-20 text-slate-900">
-        <div className="mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
-          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Loja</p>
-          <h1 className="mt-2 text-2xl font-bold">A loja está sendo configurada</h1>
-          <p className="mt-3 text-slate-600">
-            O servidor não conseguiu inicializar o acesso ao banco de dados. Verifique as variáveis de ambiente do ambiente Production e faça um novo deploy.
-          </p>
-        </div>
-      </main>
-    );
+    return <Storefront products={demoProducts} />;
   }
 }
