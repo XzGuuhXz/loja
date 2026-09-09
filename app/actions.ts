@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
+import { rateLimit } from '@/lib/security/rate-limit';
 
 const checkoutSchema = z.object({
   items: z.array(
@@ -30,6 +31,9 @@ export async function checkout(input: unknown) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { error: 'Faça login para finalizar.' };
+
+  const limited = await rateLimit({ key: `checkout:${user.id}`, limit: 10, windowSeconds: 60 });
+  if (!limited.allowed) return { error: 'Muitas tentativas. Aguarde um momento.' };
 
   // Price, stock, ownership and order total are intentionally NOT accepted from the browser.
   // The database checkout RPC is the final authority and must re-read current product data
