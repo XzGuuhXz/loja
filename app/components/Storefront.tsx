@@ -83,10 +83,10 @@ export default function Storefront({ products }: { products: Product[] }) {
       <header className="site-header">
         <div className="header-inner">
           <a className="brand" href="/" aria-label="Loja — página inicial"><span className="brand-mark" aria-hidden="true">L</span><span>LOJA<span className="brand-dot">.</span></span></a>
-          <nav className="desktop-nav" aria-label="Navegação principal"><a href="#produtos">Produtos</a><a href="#beneficios">Sobre a loja</a><a href="#ofertas">Destaques</a></nav>
+          <nav className="desktop-nav" aria-label="Navegação principal"><a href="/produtos">Produtos</a><a href="/sobre">Sobre</a><a href="/contato">Contato</a></nav>
           <div className="header-actions">
             <label className="search"><Icon name="search" /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar produtos..." aria-label="Buscar produtos" type="search" enterKeyHint="search" autoComplete="off" /></label>
-            <a className="icon-action" href="/login" aria-label="Minha conta"><Icon name="user" /></a>
+            <a className="icon-action" href="/conta" aria-label="Minha conta"><Icon name="user" /></a>
             <a className="cart-action" href="/carrinho" aria-label={`Carrinho, ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}`}><Icon name="cart" /><span className="cart-count" aria-hidden="true">{cartCount}</span></a>
           </div>
         </div>
@@ -123,7 +123,7 @@ export default function Storefront({ products }: { products: Product[] }) {
       </section>
 
       <section className="trust-banner" aria-labelledby="trust-title"><div><p className="eyebrow">A EXPERIÊNCIA LOJA</p><h2 id="trust-title">Bom design.<br /><em>Compra simples.</em></h2><p>Uma experiência direta, sem distrações, para você encontrar o que procura e seguir o seu dia.</p></div><div className="trust-stat" aria-label="Experiência segura"><strong>100%</strong><span>experiência<br />segura</span></div></section>
-      <footer><div className="footer-main"><a className="brand" href="/" aria-label="Loja — página inicial"><span className="brand-mark" aria-hidden="true">L</span><span>LOJA<span className="brand-dot">.</span></span></a><p>Escolhas simples para o dia a dia.</p><div className="footer-links"><a href="/pedidos">Meus pedidos</a><a href="/login">Minha conta</a><a href="/carrinho">Carrinho</a></div></div><div className="footer-bottom"><span>© 2026 Loja. Todos os direitos reservados.</span><span>Compra segura · Privacidade · Termos</span></div></footer>
+      <footer><div className="footer-main"><a className="brand" href="/" aria-label="Loja — página inicial"><span className="brand-mark" aria-hidden="true">L</span><span>LOJA<span className="brand-dot">.</span></span></a><p>Escolhas simples para o dia a dia.</p><div className="footer-links"><a href="/pedidos">Meus pedidos</a><a href="/conta">Minha conta</a><a href="/carrinho">Carrinho</a></div></div><div className="footer-bottom"><span>© 2026 Loja. Todos os direitos reservados.</span><span>Compra segura · Privacidade · Termos</span></div></footer>
     </main>
   );
 }

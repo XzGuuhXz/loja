@@ -1,0 +1,11 @@
+'use client';
+import {useEffect,useState} from 'react';
+type P={id:string;name:string;price:number;stock:number;image:string|null;image_alt:string|null};
+export default function ProductActions({product}:{product:P}){
+ const [qty,setQty]=useState(1),[added,setAdded]=useState(false),[favorite,setFavorite]=useState(false);
+ useEffect(()=>{try{const v=JSON.parse(localStorage.getItem('loja-favorites')||'[]');setFavorite(Array.isArray(v)&&v.includes(product.id))}catch{}},[product.id]);
+ function add(){const saved=JSON.parse(localStorage.getItem('loja-cart')||'[]');const cart=Array.isArray(saved)?saved:[];const existing=cart.find((x:any)=>x.product_id===product.id);const next=existing?cart.map((x:any)=>x.product_id===product.id?{...x,quantity:Math.min(product.stock,x.quantity+qty)}:x):[...cart,{product_id:product.id,name:product.name,price:product.price,quantity:qty,image:product.image,image_alt:product.image_alt}];localStorage.setItem('loja-cart',JSON.stringify(next));window.dispatchEvent(new Event('loja-cart-updated'));setAdded(true);setTimeout(()=>setAdded(false),1400);}
+ function toggleFavorite(){const saved=JSON.parse(localStorage.getItem('loja-favorites')||'[]');const ids=Array.isArray(saved)?saved:[];const next=ids.includes(product.id)?ids.filter((id:any)=>id!==product.id):[...ids,product.id];localStorage.setItem('loja-favorites',JSON.stringify(next));setFavorite(next.includes(product.id));}
+ if(product.stock<=0)return <p className="form-message">Este produto está esgotado.</p>;
+ return <div style={{display:'grid',gap:10,marginTop:24}}><div style={{display:'grid',gridTemplateColumns:'120px 1fr',gap:10}}><input aria-label="Quantidade" type="number" min={1} max={Math.min(product.stock,20)} value={qty} onChange={e=>setQty(Math.max(1,Math.min(Math.min(product.stock,20),Number(e.target.value)||1)))} style={{padding:'12px',border:'1px solid var(--line)'}}/><button className="primary-btn" type="button" onClick={add}>{added?'Adicionado ✓':'Adicionar ao carrinho →'}</button></div><button type="button" onClick={toggleFavorite} style={{padding:'11px 14px',border:'1px solid var(--line)',background:'white',textAlign:'left'}}>{favorite?'♥ Remover dos favoritos':'♡ Adicionar aos favoritos'}</button></div>;
+}
