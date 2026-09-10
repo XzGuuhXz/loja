@@ -1,6 +1,0 @@
-import Link from 'next/link'; import {redirect} from 'next/navigation'; import {createClient} from '@/lib/supabase/server'; import {updateProfile} from './actions';
-export default async function Profile(){
- const s=await createClient(); const {data:{user}}=await s.auth.getUser(); if(!user)redirect('/login?next=/conta/perfil');
- const {data:p}=await s.from('profiles').select('full_name,created_at').eq('id',user.id).maybeSingle();
- return <main className="page-shell"><Link className="back-link" href="/conta">← Minha conta</Link><div className="page-title"><p className="eyebrow">MINHA CONTA</p><h1>Meus dados</h1></div><section className="panel" style={{maxWidth:620}}><p style={{color:'var(--muted)',fontSize:12}}>E-mail: <strong>{user.email}</strong></p><form action={updateProfile} className="form-grid"><label>Nome<input name="full_name" defaultValue={p?.full_name||''} required minLength={2} maxLength={120}/></label><button className="primary-btn" type="submit">Salvar alterações</button></form></section></main>;
-}

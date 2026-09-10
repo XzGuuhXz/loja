@@ -1,4 +1,0 @@
-'use client';
-import {useEffect,useState} from 'react';
-import Link from 'next/link';
-export default function Favorites(){const [ids,setIds]=useState<string[]>([]);useEffect(()=>{try{const v=JSON.parse(localStorage.getItem('loja-favorites')||'[]');setIds(Array.isArray(v)?v:[])}catch{}},[]);return <main className="page-shell"><Link className="back-link" href="/conta">← Minha conta</Link><div className="page-title"><p className="eyebrow">MINHA CONTA</p><h1>Favoritos</h1></div>{ids.length?<div className="empty-state"><p>{ids.length} produto(s) salvo(s). Abra o catálogo para continuar comprando.</p><Link className="loja-btn loja-btn-primary" href="/produtos">Ver catálogo</Link></div>:<div className="empty-state"><h2>Nenhum favorito ainda</h2><p>Salve produtos para encontrá-los aqui.</p><Link className="loja-btn loja-btn-primary" href="/produtos">Explorar produtos</Link></div>}</main>}

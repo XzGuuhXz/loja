@@ -1,39 +1,7 @@
-import type { Metadata } from 'next';
-import { DM_Serif_Display, Manrope } from 'next/font/google';
-import './globals.css';
-import './modern.css';
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-display',
-  display: 'swap',
-});
-
-export const metadata: Metadata = {
-  title: {
-    default: 'Loja — escolha melhor, viva melhor',
-    template: '%s | Loja',
-  },
-  description: 'Uma experiência de e-commerce moderna, simples e segura.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  openGraph: {
-    title: 'Loja — escolha melhor, viva melhor',
-    description: 'Produtos selecionados com uma experiência de compra simples e segura.',
-    type: 'website',
-  },
-};
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="pt-BR" className={`${manrope.variable} ${dmSerif.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
-}
+import type { Metadata } from "next";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import "./globals.css";
+const inter=Inter({variable:"--font-inter",subsets:["latin"],display:"swap"});
+const jakarta=Plus_Jakarta_Sans({variable:"--font-jakarta",subsets:["latin"],display:"swap"});
+export const metadata:Metadata={metadataBase:new URL(process.env.NEXT_PUBLIC_APP_URL??"http://localhost:3000"),title:{default:"NovaVitrine | Tudo em um só lugar",template:"%s | NovaVitrine"},description:"E-commerce moderno com produtos variados e uma experiência de compra simples.",applicationName:"NovaVitrine"};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="pt-BR"><body className={`${inter.variable} ${jakarta.variable} antialiased`}>{children}</body></html>}
