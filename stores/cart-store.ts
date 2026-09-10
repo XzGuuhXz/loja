@@ -1,0 +1,7 @@
+"use client";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { CartItem, CartTotals } from "@/types/cart";
+type CartState={items:CartItem[];addItem:(item:Omit<CartItem,"quantity">,quantity?:number)=>void;removeItem:(productId:string)=>void;updateQuantity:(productId:string,quantity:number)=>void;clearCart:()=>void;getTotals:()=>CartTotals};
+const MAX=99;
+export const useCartStore=create<CartState>()(persist((set,get)=>({items:[],addItem:(item,quantity=1)=>set(s=>{const found=s.items.find(x=>x.productId===item.productId);const requested=Math.max(1,Math.floor(quantity));const max=Math.min(item.stock,MAX);if(max<=0)return s;if(!found)return{items:[...s.items,{...item,quantity:Math.min(requested,max)}]};return{items:s.items.map(x=>x.productId===item.productId?{...x,...item,quantity:Math.min(x.quantity+requested,Math.min(item.stock,MAX))}:x)}}),removeItem:id=>set(s=>({items:s.items.filter(x=>x.productId!==id)})),updateQuantity:(id,quantity)=>set(s=>({items:s.items.flatMap(x=>{if(x.productId!==id)return[x];const max=Math.min(x.stock,MAX),next=Math.floor(quantity);if(next<=0||max<=0)return[];return[{...x,quantity:Math.min(next,max)}]})})),clearCart:()=>set({items:[]}),getTotals:()=>{const subtotal=get().items.reduce((sum,x)=>sum+x.price*x.quantity,0);const shipping=subtotal===0||subtotal>=250?0:24.9;return{subtotal,shipping,total:subtotal+shipping}}}),{name:"novavitrine-cart",version:1,partialize:s=>({items:s.items})}));
