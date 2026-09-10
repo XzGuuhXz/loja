@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 type Product = {
   id: string;
   name: string;
+  slug?: string;
   description: string | null;
   price: number | string;
   stock: number;
@@ -71,7 +72,7 @@ export default function Storefront({ products }: { products: Product[] }) {
     itemListElement: filtered.slice(0, 12).map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      url: product.id.startsWith('demo-') ? '/' : `/produto/${product.id}`,
+      url: product.slug ? `/produto/${product.slug}` : '/',
       name: product.name,
     })),
   }), [filtered]);
