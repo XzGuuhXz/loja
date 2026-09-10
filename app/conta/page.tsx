@@ -1,37 +1,75 @@
+import Link from "next/link";
 import { auth } from "@/auth";
+import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
+
+const money = (value: number) =>
+  new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(value);
+
+const statusLabels: Record<string, string> = {
+  PENDING: "Aguardando pagamento",
+  PAID: "Pago",
+  PROCESSING: "Em preparação",
+  SHIPPED: "Enviado",
+  DELIVERED: "Entregue",
+  CANCELLED: "Cancelado",
+};
+
+const paymentLabels: Record<string, string> = {
+  PIX: "PIX",
+  CARD: "Cartão",
+  BOLETO: "Boleto",
+};
 
 export default async function AccountPage() {
   const session = await auth();
+  if (!session?.user?.id) redirect("/login");
 
-  if (!session?.user) {
-    redirect("/login");
-  }
+  const orders = await prisma.order.findMany({
+    where: { userId: session.user.id },
+    include: { items: true },
+    orderBy: { createdAt: "desc" },
+    take: 10,
+  });
 
   return (
-    <main className="min-h-screen bg-slate-50 px-6 py-16">
-      <section className="mx-auto max-w-4xl rounded-3xl border border-slate-200 bg-white p-8">
-        <p className="text-sm font-bold uppercase tracking-widest text-indigo-600">
-          Minha conta
-        </p>
-        <h1 className="mt-2 font-[family-name:var(--font-jakarta)] text-3xl font-extrabold">
-          Olá, {session.user.name ?? "cliente"}!
-        </h1>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl bg-slate-50 p-5">
-            <span className="text-sm text-slate-500">E-mail</span>
-            <p className="mt-2 font-bold">{session.user.email}</p>
+    <main className="min-h-screen bg-slate-50 px-6 py-10 text-slate-950">
+      <div className="mx-auto max-w-5xl">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-widest text-indigo-600">Minha conta</p>
+            <h1 className="mt-2 text-3xl font-extrabold">Olá, {session.user.name ?? "cliente"}!</h1>
+            <p className="mt-2 text-slate-500">Acompanhe seus pedidos e seus dados de acesso.</p>
           </div>
-          <div className="rounded-2xl bg-slate-50 p-5">
-            <span className="text-sm text-slate-500">Perfil</span>
-            <p className="mt-2 font-bold">{session.user.role}</p>
-          </div>
-          <div className="rounded-2xl bg-slate-50 p-5">
-            <span className="text-sm text-slate-500">Sessão</span>
-            <p className="mt-2 font-bold">Ativa</p>
-          </div>
+          <Link href="/produtos" className="rounded-xl bg-slate-950 px-5 py-3 text-sm font-bold text-white">Continuar comprando</Link>
         </div>
-      </section>
+
+        <section className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="rounded-2xl border border-slate-200 bg-white p-5"><span className="text-sm text-slate-500">E-mail</span><p className="mt-2 break-all font-bold">{session.user.email}</p></div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5"><span className="text-sm text-slate-500">Pedidos</span><p className="mt-2 font-bold">{orders.length}</p></div>
+          <div className="rounded-2xl border border-slate-200 bg-white p-5"><span className="text-sm text-slate-500">Perfil</span><p className="mt-2 font-bold">{session.user.role === "CUSTOMER" ? "Cliente" : session.user.role}</p></div>
+        </section>
+
+        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+          <div className="flex items-center justify-between gap-4">
+            <div><p className="text-sm font-bold uppercase tracking-widest text-indigo-600">Histórico</p><h2 className="mt-1 text-2xl font-extrabold">Meus pedidos</h2></div>
+            <Link href="/conta/pedidos" className="text-sm font-bold text-indigo-600">Ver todos</Link>
+          </div>
+
+          {orders.length === 0 ? (
+            <div className="mt-8 rounded-2xl bg-slate-50 p-8 text-center"><p className="font-bold">Você ainda não fez nenhum pedido.</p><p className="mt-2 text-sm text-slate-500">Explore a loja e encontre seus próximos produtos.</p><Link href="/produtos" className="mt-5 inline-flex rounded-xl bg-indigo-600 px-5 py-3 text-sm font-bold text-white">Ver produtos</Link></div>
+          ) : (
+            <div className="mt-6 divide-y divide-slate-200">
+              {orders.map((order) => (
+                <article key={order.id} className="flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div><p className="font-bold">Pedido #{order.id.slice(-8).toUpperCase()}</p><p className="mt-1 text-sm text-slate-500">{order.createdAt.toLocaleDateString("pt-BR")} · {order.items.length} item(ns)</p></div>
+                  <div className="flex items-center justify-between gap-5 sm:justify-end"><div className="text-right"><p className="text-sm font-semibold">{statusLabels[order.status]}</p><p className="mt-1 text-xs text-slate-500">{paymentLabels[order.paymentMethod]} · {money(Number(order.total))}</p></div><Link href={`/conta/pedidos/${order.id}`} className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-bold hover:border-indigo-300 hover:text-indigo-600">Detalhes</Link></div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
     </main>
   );
 }
